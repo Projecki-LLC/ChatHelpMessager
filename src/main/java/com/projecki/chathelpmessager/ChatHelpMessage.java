@@ -3,6 +3,7 @@ package com.projecki.chathelpmessager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ChatHelpMessage {
@@ -60,5 +61,11 @@ public class ChatHelpMessage {
         if (command != null && !command.isBlank()) {
             player.performCommand(this.command);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "must: " + Arrays.toString(this.mustContain.toArray()) + ", could: " + Arrays.toString(this.couldContain.toArray()) +
+                ", msg: " + this.message + ", cmd: " + this.command;
     }
 }

@@ -25,11 +25,11 @@ public class ChatHelpMessager extends JavaPlugin {
         this.loadConfigMessages(messageManager);
 
         getServer().getPluginManager().registerEvents(new MessageListener(), this);
+        getCommand("chm").setExecutor(new ChatHelpCommands());
     }
 
     @Override
     public void onDisable() {
-        this.saveConfig();
     }
 
     public ChatHelpMessageManager getMessageManager() {

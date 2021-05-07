@@ -1,3 +1,8 @@
 main: com.projecki.chathelpmessager.ChatHelpMessager
 version: 1.0.0
 name: ChatHelpMessager
+
+commands:
+  chm:
+    usage: /chm reload
+    description: reload the config into the server

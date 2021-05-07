@@ -12,6 +12,15 @@ public class ChatHelpMessageManager {
         this.helpMessages.add(helpMessage);
     }
 
+    public void reload() {
+        this.helpMessages.clear();
+        ChatHelpMessager.getInstance().reloadConfig();
+        ChatHelpMessager.getInstance().loadConfigMessages(this);
+        for (ChatHelpMessage helpMessage : this.helpMessages) {
+            System.out.println(helpMessage.toString());
+        }
+    }
+
     public Optional<ChatHelpMessage> getPossibleHelpMessage(String rawInputMessage) {
 
         ChatHelpMessage possibleFound = null;
