@@ -10,11 +10,13 @@ public class ChatHelpMessage {
     private final List<String> mustContain;
     private final List<String> couldContain;
     private final String message;
+    private final String command;
 
-    public ChatHelpMessage(List<String> mustContain, List<String> couldContain, String message) {
+    public ChatHelpMessage(List<String> mustContain, List<String> couldContain, String message, String command) {
         this.mustContain = mustContain;
         this.couldContain = couldContain;
         this.message = message;
+        this.command = command == null ? "" : command.replaceAll("/", "");
     }
 
     public List<String> getMustContain() {
@@ -51,6 +53,12 @@ public class ChatHelpMessage {
     public void send(Player player) {
         if (player.isOnline()) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', this.message));
+        }
+    }
+
+    public void runCommand(Player player) {
+        if (command != null && !command.isBlank()) {
+            player.performCommand(this.command);
         }
     }
 }

@@ -52,8 +52,9 @@ public class ChatHelpMessager extends JavaPlugin {
 
             List<String> couldContain = section.getStringList("could-contain");
             String message = section.getString("message");
+            String command = section.getString("command");
 
-            manager.addChatHelpMessage(new ChatHelpMessage(mustContain, couldContain, message));
+            manager.addChatHelpMessage(new ChatHelpMessage(mustContain, couldContain, message, command));
         }
     }
 }

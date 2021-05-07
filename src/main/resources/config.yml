@@ -1,7 +1,10 @@
 # Copy and paste the "map-help" block to make new help messages
+
 # "must-contain" are keywords are ALL must be in the messages for this to fire.
 # "could-contain" are keywords that might be in the message. It could contain 1, all, none or any in between.
 # "message" is the message to be printed out when this is triggered.
+# "command" is a command that will be run as/from the original sender when this is triggered, this is optional.
+
 # A help message with 0 "must contains" will not be registered
 # Split to a new line by adding "\n" (remember to reset chat colours on new lines as they carry through the '\n')
 # Colour codes are abbreviated with "&"
@@ -17,3 +20,4 @@ messages:
       - "map?"
     could-contain: []
     message: "place &6holder\nsomething else on a new line"
+    command: ""

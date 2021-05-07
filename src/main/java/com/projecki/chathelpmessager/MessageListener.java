@@ -12,6 +12,8 @@ public class MessageListener implements Listener {
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
         String msg = event.getMessage();
+        if (msg.startsWith("/")) return;
+
         ChatHelpMessageManager manager = ChatHelpMessager.getInstance().getMessageManager();
 
         if (event.getRecipients().isEmpty()) {
@@ -22,8 +24,11 @@ public class MessageListener implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                possibleHelpMessage.ifPresent(chatHelpMessage -> chatHelpMessage.send(event.getPlayer()));
+                possibleHelpMessage.ifPresent(chatHelpMessage -> {
+                    chatHelpMessage.send(event.getPlayer());
+                    chatHelpMessage.runCommand(event.getPlayer());
+                });
             }
-        }.runTaskLater(ChatHelpMessager.getInstance(), 15L);
+        }.runTaskLater(ChatHelpMessager.getInstance(), 10L);
     }
 }
